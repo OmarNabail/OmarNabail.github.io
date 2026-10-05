@@ -6,7 +6,7 @@ import fitz
 
 ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
-ORIGIN = 'https://omar-nabail-portfolio.workspace-531875.chatgpt.site'
+ORIGIN = 'https://omarnabail.github.io'
 EMAIL = 'omargamal039@gmail.com'
 GH = 'https://github.com/OmarNabail'
 LI = 'https://www.linkedin.com/in/omar-nabail/'
@@ -87,7 +87,7 @@ for c in cases:
     content = f'''<div class="wrap"><header class="case-hero"><a class="back-link" href="index.html#work">Back to selected work</a><p class="eyebrow">{c['label']}</p><h1>{c['title']}</h1><p class="case-lead">{c['lead']}</p></header><div class="case-layout"><article class="case-body"><figure class="architecture"><div class="stages">{flow}</div><figcaption>{c['caption']}</figcaption></figure>{sections}<div class="actions"><a class="button secondary" href="index.html#work">More selected work</a><a class="button" href="mailto:{EMAIL}">Discuss this project</a></div></article><aside class="case-aside"><h2>Technical toolkit</h2>{tags(c['skills'])}<h2>Evidence</h2><p>{c['evidence']}</p>{links}</aside></div></div>'''
     page(c['title']+' | Omar Nabail',c['lead'],content,c['file'])
 
-page('Privacy | Omar Nabail','Privacy information for Omar Nabail’s portfolio.',f'''<div class="wrap"><article class="privacy"><a class="back-link" href="index.html">Back to portfolio</a><h1>Privacy</h1><p>This portfolio presents the work of Omar Nabail. For questions about the content, contact <a href="mailto:{EMAIL}">{EMAIL}</a>.</p><h2>How this website works</h2><p>The portfolio itself uses static pages. Its application code does not include visitor analytics, advertising trackers, a contact form, or browser-storage features.</p><h2>Hosting</h2><p>This version is hosted using ChatGPT Sites. The hosting platform may process technical request information and use authentication or other platform features independently of this portfolio’s code. See <a href="https://openai.com/policies/privacy-policy/">OpenAI’s privacy policy</a> for information about its processing.</p><h2>External links and email</h2><p>GitHub, LinkedIn, and Hugging Face links take you to external services governed by their own privacy policies. Selecting an email link opens your email application; this website does not submit a message on your behalf.</p><h2>CV</h2><p>The downloadable CV contains professional background and contact information supplied by Omar Nabail.</p></article></div>''','privacy.html')
+page('Privacy | Omar Nabail','Privacy information for Omar Nabail’s portfolio.',f'''<div class="wrap"><article class="privacy"><a class="back-link" href="index.html">Back to portfolio</a><h1>Privacy</h1><p>This portfolio presents the work of Omar Nabail. For questions about the content, contact <a href="mailto:{EMAIL}">{EMAIL}</a>.</p><h2>How this website works</h2><p>The portfolio uses static pages. Its application code does not include visitor analytics, advertising trackers, a contact form, or browser-storage features.</p><h2>Hosting</h2><p>This website is hosted with GitHub Pages. GitHub may process technical request information, including visitor IP addresses, for security purposes. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a> for details.</p><h2>External links and email</h2><p>GitHub, LinkedIn, and Hugging Face links take you to external services governed by their own privacy policies. Selecting an email link opens your email application; this website does not submit a message on your behalf.</p><h2>CV</h2><p>The downloadable CV contains professional background and contact information supplied by Omar Nabail.</p></article></div>''','privacy.html')
 
 # Create a website-specific copy; never alter the user's original CV.
 source = Path(r'D:\summer26\job_application\cv_omar_nabail.pdf')
@@ -108,4 +108,5 @@ doc.close()
 routes = ['index.html'] + [c['file'] for c in cases] + ['privacy.html']
 (DIST/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+ORIGIN+('/' if p=='index.html' else '/'+p)+'</loc></url>' for p in routes)+'</urlset>',encoding='utf-8')
 (DIST/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+ORIGIN+'/sitemap.xml\n',encoding='utf-8')
+(DIST/'.nojekyll').write_text('',encoding='utf-8')
 print(f'Generated {len(routes)} pages, sitemap, robots.txt, and updated CV copy.')
