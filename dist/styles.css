@@ -9,5 +9,5 @@
 .feature-panel .text-links{margin-top:28px}
 .compact-content{min-width:0}
 .compact-content p.project-tech{margin:0 0 9px;color:var(--purple);font:500 .78rem/1.55 var(--mono)}
-.compact-content ul{margin:0;padding-left:1.15rem;color:var(--muted);font-size:.9375rem}
-.compact-content li+li{margin-top:8px}
+.compact-content p:not(.project-tech){margin:0;color:var(--muted);font-size:.9375rem}
+.compact-content p:not(.project-tech)+p:not(.project-tech){margin-top:9px}
