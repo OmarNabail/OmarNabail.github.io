@@ -4,9 +4,24 @@ Source for [omarnabail.github.io](https://omarnabail.github.io), an evidence-led
 
 ## Edit the portfolio
 
-- Edit the content and metadata in `build.py`.
-- Edit the visual design in `dist/styles.css`.
-- Run `python build.py` to regenerate the static pages.
-- Run `python check.py` to validate local links, headings, claims, and the downloadable CV.
+- Edit text, project descriptions, links, and metadata in `build.py`.
+- Edit colors, spacing, typography, and responsive layout in `dist/styles.css`.
+- Replace `assets/Omar-Nabail-CV.pdf` when the CV changes.
 
-Pushing the `main` branch deploys the contents of `dist/` through GitHub Pages.
+### Edit directly on GitHub
+
+Open the file, select the pencil icon, make the change, and commit it to `main`. GitHub Actions automatically runs `build.py`, validates the result, and deploys the generated `dist/` website.
+
+Do not edit the generated HTML files in `dist/` for content changes; `build.py` will replace them during deployment.
+
+### Edit locally
+
+```powershell
+python build.py
+python check.py
+git add build.py check.py assets dist
+git commit -m "Describe the portfolio change"
+git push origin main
+```
+
+Every push to `main` regenerates and deploys the website through GitHub Pages.

@@ -91,7 +91,7 @@ for c in cases:
 page('Privacy | Omar Nabail','Privacy information for Omar Nabail’s portfolio.',f'''<div class="wrap"><article class="privacy"><a class="back-link" href="index.html">Back to portfolio</a><h1>Privacy</h1><p>This portfolio presents the work of Omar Nabail. For questions about the content, contact <a href="mailto:{EMAIL}">{EMAIL}</a>.</p><h2>How this website works</h2><p>The portfolio uses static pages. Its application code does not include visitor analytics, advertising trackers, a contact form, or browser-storage features.</p><h2>Hosting</h2><p>This website is hosted with GitHub Pages. GitHub may process technical request information, including visitor IP addresses, for security purposes. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a> for details.</p><h2>External links and email</h2><p>GitHub, LinkedIn, and Hugging Face links take you to external services governed by their own privacy policies. Selecting an email link opens your email application; this website does not submit a message on your behalf.</p><h2>CV</h2><p>The downloadable CV contains professional background and contact information supplied by Omar Nabail.</p></article></div>''','privacy.html')
 
 # Publish the user's current CV exactly as supplied.
-source = Path(r'D:\summer26\job_application\master_cv.pdf')
+source = ROOT / 'assets' / 'Omar-Nabail-CV.pdf'
 shutil.copyfile(source, DIST/'Omar-Nabail-CV.pdf')
 
 routes = ['index.html'] + [c['file'] for c in cases] + ['privacy.html']

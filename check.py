@@ -35,6 +35,6 @@ assert 'JUL 2026 – PRESENT' in index and 'Local RAG with Hybrid Retrieval &amp
 assert 'zero-shot, few-shot, and chain-of-thought' in all_pages
 assert 'What this demonstrates' not in all_pages and 'Discuss this project' not in all_pages
 assert 'No quantitative throughput' not in all_pages
-source_cv=Path(r'D:\summer26\job_application\master_cv.pdf')
+source_cv=Path(__file__).parent/'assets'/'Omar-Nabail-CV.pdf'
 assert (root/'Omar-Nabail-CV.pdf').read_bytes() == source_cv.read_bytes()
 print(f'PASS: {len(docs)} pages, links, headings, requested copy changes, and exact CV verified.')
