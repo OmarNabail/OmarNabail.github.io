@@ -38,6 +38,8 @@ assert 'No quantitative throughput' not in all_pages
 assert 'figures should be read within the thesis evaluation context' not in all_pages
 assert index.count('class="project-tech"') == 9
 assert '<ul>' not in index[index.index('<details class="more-projects"'):index.index('</details>')]
+for skill in ['scikit-learn','Qwen','Ollama','Prompt engineering','Ragas','Streamlit','Matplotlib','LlamaIndex','ChromaDB','Sentence Transformers']:
+    assert skill in index, skill
 source_cv=Path(__file__).parent/'assets'/'Omar-Nabail-CV.pdf'
 assert (root/'Omar-Nabail-CV.pdf').read_bytes() == source_cv.read_bytes()
 print(f'PASS: {len(docs)} pages, links, headings, requested copy changes, and exact CV verified.')
