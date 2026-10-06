@@ -2,7 +2,6 @@
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
-import fitz
 
 root = Path(__file__).parent / 'dist'
 class Document(HTMLParser):
@@ -27,8 +26,15 @@ for filename,doc in docs.items():
         if u.fragment: assert u.fragment in docs[target].ids,(filename,link)
     text=(root/filename).read_text(encoding='utf-8').lower()
     assert '25%' not in text and 'availability' not in text and 'available for' not in text
-cv=fitz.open(root/'Omar-Nabail-CV.pdf')
-text=' '.join(p.get_text() for p in cv)
-assert 'Available for' not in text and 'preparing for B2 exam' in text
-assert 'LANGUAGES' in text and 'English: C1' in text
-print(f'PASS: {len(docs)} pages, all local links and anchors, one H1 per page, removed claims, updated CV.')
+index=(root/'index.html').read_text(encoding='utf-8')
+all_pages=' '.join(p.read_text(encoding='utf-8') for p in root.glob('*.html'))
+assert '<strong>Omar Nabail</strong>' not in index
+assert 'Featured project' not in index
+assert 'Master’s thesis · In progress' not in index and 'Final experimental results are pending' not in index
+assert 'JUL 2026 – PRESENT' in index and 'Local RAG with Hybrid Retrieval &amp; Reranking' in index
+assert 'zero-shot, few-shot, and chain-of-thought' in all_pages
+assert 'What this demonstrates' not in all_pages and 'Discuss this project' not in all_pages
+assert 'No quantitative throughput' not in all_pages
+source_cv=Path(r'D:\summer26\job_application\master_cv.pdf')
+assert (root/'Omar-Nabail-CV.pdf').read_bytes() == source_cv.read_bytes()
+print(f'PASS: {len(docs)} pages, links, headings, requested copy changes, and exact CV verified.')

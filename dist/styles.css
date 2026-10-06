@@ -4,3 +4,10 @@
 /* Preserve readable layouts at enlarged text sizes. */
 .metrics{flex-wrap:wrap}.hero-grid>*{min-width:0}.output-box{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.output-code{overflow-wrap:anywhere}.mini-flow{flex-wrap:wrap}.auc{flex-wrap:wrap}.stages{overflow-wrap:anywhere}@media(max-width:700px){.nav{height:auto;min-height:70px;padding:14px 0;flex-wrap:wrap}.navlinks{flex-wrap:wrap}.hero-visual{padding:18px}.output-box{gap:10px;padding:10px}.window-bar{flex-wrap:wrap;gap:8px}}
 .experience-layout>*,.skills-grid>*,.case-layout>*,.featured>*,.project-grid>*{min-width:0}h1,h2,h3,h4,.tag,.eyebrow{overflow-wrap:anywhere}
+
+/* Project-list rhythm and featured-panel alignment. */
+.feature-panel .text-links{margin-top:28px}
+.compact-content{min-width:0}
+.compact-content p.project-tech{margin:0 0 9px;color:var(--purple);font:500 .78rem/1.55 var(--mono)}
+.compact-content ul{margin:0;padding-left:1.15rem;color:var(--muted);font-size:.9375rem}
+.compact-content li+li{margin-top:8px}
